@@ -1,11 +1,9 @@
-NHW Neatness Metrics
-============
+# NHW Neatness Metrics
 
 This metrics allows to compare neatness between 2 files based on a neatness/perceived quality model.
 
 
-Command line
-============
+## Usage
 
 nhw_neatness_metrics.exe neatness_file.bmp reference_file.bmp
 		
