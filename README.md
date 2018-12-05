@@ -2,6 +2,9 @@
 
 This metrics allows to compare neatness between 2 files based on a neatness/perceived quality model.
 
+This work was initially done for the NHW Project (image compression codec) to objectively measure/show that
+the codec has more neatness, compared to x265 (HEVC) for example.
+
 
 ## Usage
 
