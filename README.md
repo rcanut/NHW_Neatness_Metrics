@@ -8,7 +8,7 @@ the codec has more neatness, compared to x265 (HEVC) for example.
 
 ## Usage
 
-nhw_neatness_metrics.exe neatness_file.bmp reference_file.bmp
+nhw_neatness_metrics.exe neatness_file.bmp reference_file.bmp [metric_visualization_file.bmp]
 		
 with neatness_file and reference_file bitmap color 512x512 images
 		
