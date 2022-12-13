@@ -14,3 +14,9 @@ with neatness_file and reference_file bitmap color 512x512 images
 		
 Be sure neatness_file.bmp, the file to be studied is in first argument
 and reference_file.bmp the original reference file is in second argument.
+
+### Demo: 
+
+metric_visualization_file on Lena.bmp
+
+![Example 1](https://user-images.githubusercontent.com/12370082/207364918-157ff7f7-95c3-43a6-9e5b-0139c5430b81.png)
