@@ -119,7 +119,7 @@ int main(int argc, char **argv)
                                ref_comp[scan-(NHW_IM_DIM-1)]-ref_comp[scan+(NHW_IM_DIM+1)];
 
                         if (abs(res2) > (NEATNESS_PERCEPTION >> 1))
-                        {				
+			{
 				if (res>0) 
 				{	
 					if ((nhw_comp[scan]-ref_comp[scan])>=NEATNESS_THRESHOLD2 && (nhw_comp[scan]-ref_comp[scan])<=NEATNESS_THRESHOLD1)
