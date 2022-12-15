@@ -44,7 +44,7 @@ int main(int argc, char **argv)
         printf ("\n Could not open reference file %s\n", argv[1]);
         exit(-1);
     }
-	
+
     fread(bmp_header, 54, 1, nhw_im_512);
     fread(nhw_image, NHW_IM_SIZE*RGB_comps, 1, nhw_im_512);
     fclose(nhw_im_512);
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
         printf ("\n Could not open reference file %s\n", argv[2]);
         exit(-1);
     }
-	
+
     fread(bmp_header, 54, 1, ref_im_512);
     fread(ref_image, NHW_IM_SIZE*RGB_comps, 1, ref_im_512);
     fclose(ref_im_512);
@@ -62,13 +62,13 @@ int main(int argc, char **argv)
     if (argc > 3)
     {
         m_image = (unsigned char*)malloc(imsize);
-		
+
         if ((m_im_512 = fopen(argv[3], "wb")) == NULL )
         {
             printf ("\n Could not open reference file %s\n", argv[3]);
             exit(-1);
         }
-		
+
         fwrite(bmp_header, 54, 1, m_im_512);
     }
 
@@ -119,44 +119,44 @@ int main(int argc, char **argv)
                                ref_comp[scan-(NHW_IM_DIM-1)]-ref_comp[scan+(NHW_IM_DIM+1)];
 
                         if (abs(res2) > (NEATNESS_PERCEPTION >> 1))
-						{
-							if (res>0) 
-							{	
-								if ((nhw_comp[scan]-ref_comp[scan])>=NEATNESS_THRESHOLD2 && (nhw_comp[scan]-ref_comp[scan])<=NEATNESS_THRESHOLD1)
-								{
-									if (m_image) m_image[scan*RGB_comps+comp] = 220 + nhw_comp[scan]-ref_comp[scan];
-									
-									neatness_amount += (nhw_comp[scan]-ref_comp[scan])*(nhw_comp[scan]-ref_comp[scan]);
-									
-									significance++;
-								}
-							}
-							else
-							{
-								if ((ref_comp[scan]-nhw_comp[scan])>=NEATNESS_THRESHOLD2 && (ref_comp[scan]-nhw_comp[scan])<=NEATNESS_THRESHOLD1)
-								{
-									if (m_image) m_image[scan*RGB_comps+comp] = 220 + ref_comp[scan]-nhw_comp[scan];
-									
-									neatness_amount += (ref_comp[scan]-nhw_comp[scan])*(ref_comp[scan]-nhw_comp[scan]);
-						
-									significance++;
-								}
-							}
+                        {
+                            if (res>0)
+                            {
+                                if ((nhw_comp[scan]-ref_comp[scan])>=NEATNESS_THRESHOLD2 && (nhw_comp[scan]-ref_comp[scan])<=NEATNESS_THRESHOLD1)
+                                {
+                                    if (m_image) m_image[scan*RGB_comps+comp] = 220 + nhw_comp[scan]-ref_comp[scan];
+
+                                    neatness_amount += (nhw_comp[scan]-ref_comp[scan])*(nhw_comp[scan]-ref_comp[scan]);
+
+                                    significance++;
+                                }
+                            }
+                            else
+                            {
+                                if ((ref_comp[scan]-nhw_comp[scan])>=NEATNESS_THRESHOLD2 && (ref_comp[scan]-nhw_comp[scan])<=NEATNESS_THRESHOLD1)
+                                {
+                                    if (m_image) m_image[scan*RGB_comps+comp] = 220 + ref_comp[scan]-nhw_comp[scan];
+
+                                    neatness_amount += (ref_comp[scan]-nhw_comp[scan])*(ref_comp[scan]-nhw_comp[scan]);
+
+                                    significance++;
+                                }
+                            }
                         }
                     }
-					
+
                     n1 = 0;
                 }
             }
         }
     }
-	
+
     if (m_image)
     {
         fwrite(m_image, NHW_IM_SIZE*RGB_comps, 1, m_im_512);
         fclose(m_im_512);
     }
-	
+
     neatness = (float)(neatness_amount) / (float)(significance);
     printf("\nSignificance = %d  NHW Neatness metrics = %f\n", significance, neatness);
 
