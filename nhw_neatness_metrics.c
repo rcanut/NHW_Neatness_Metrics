@@ -120,28 +120,28 @@ int main(int argc, char **argv)
 
                         if (abs(res2) > (NEATNESS_PERCEPTION >> 1))
                         {				
-							if (res>0) 
-							{	
-								if ((nhw_comp[scan]-ref_comp[scan])>=NEATNESS_THRESHOLD2 && (nhw_comp[scan]-ref_comp[scan])<=NEATNESS_THRESHOLD1)
-								{
-									if (m_image) m_image[scan*RGB_comps+comp] = 220 + nhw_comp[scan]-ref_comp[scan];
+				if (res>0) 
+				{	
+					if ((nhw_comp[scan]-ref_comp[scan])>=NEATNESS_THRESHOLD2 && (nhw_comp[scan]-ref_comp[scan])<=NEATNESS_THRESHOLD1)
+					{
+						if (m_image) m_image[scan*RGB_comps+comp] = 220 + nhw_comp[scan]-ref_comp[scan];
 									
-									neatness_amount += (nhw_comp[scan]-ref_comp[scan])*(nhw_comp[scan]-ref_comp[scan]);
+						neatness_amount += (nhw_comp[scan]-ref_comp[scan])*(nhw_comp[scan]-ref_comp[scan]);
 									
-									significance++;
-								}
-							}
-							else
-							{
-								if ((ref_comp[scan]-nhw_comp[scan])>=NEATNESS_THRESHOLD2 && (ref_comp[scan]-nhw_comp[scan])<=NEATNESS_THRESHOLD1)
-								{
-									if (m_image) m_image[scan*RGB_comps+comp] = 220 + ref_comp[scan]-nhw_comp[scan];
+						significance++;
+					}
+				}
+				else
+				{
+					if ((ref_comp[scan]-nhw_comp[scan])>=NEATNESS_THRESHOLD2 && (ref_comp[scan]-nhw_comp[scan])<=NEATNESS_THRESHOLD1)
+					{
+						if (m_image) m_image[scan*RGB_comps+comp] = 220 + ref_comp[scan]-nhw_comp[scan];
 									
-									neatness_amount += (ref_comp[scan]-nhw_comp[scan])*(ref_comp[scan]-nhw_comp[scan]);
+						neatness_amount += (ref_comp[scan]-nhw_comp[scan])*(ref_comp[scan]-nhw_comp[scan]);
 									
-									significance++;
-								}
-							}
+						significance++;
+					}
+				}
                         }
                     }
 					
